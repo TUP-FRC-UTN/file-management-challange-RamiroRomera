@@ -2,34 +2,43 @@
 
     <h1>Formulario Archivo</h1>
 
-    <form #form="ngForm">
+    <form #form="ngForm" (ngSubmit)="sendForm(form)">
         <div>
             <label for="">Nombre</label>
-            <input type="text" [(ngModel)]="nuevoArchivo.name" name="name">        
-        </div>
-        <label for="">Tipo de Archivo</label>
-        <select name="nuevoArchivo.type" id="nuevoArchivo.type" [(ngModel)]="nuevoArchivo.type">
-            @for (item of tiposArchivos; track $index) {
-                <option [value]="item">{{item}}</option>
-            }
-        </select>
-
-        <div>      
-            <label for="duenioSeleccionado">Dueños</label>      
-            <select name="duenioSeleccionado" [(ngModel)]="duenioSeleccionado">
-                @for (item of listDuenios; track $index) {
-                    <option [ngValue]="item">{{item.name}}</option>
+            <input #name="ngModel" type="text" [(ngModel)]="nuevoArchivo.name" name="name" required>    
+            @if (name.invalid && (name.dirty || name.touched)) {
+                @if (name.getError("required")) {
+                    <div class="text-danger">Nombre obligatorio</div>
                 }
-            </select>
-            <button class="btn btn-info" type="button" (click)="agregarDuenio()">Agregar Dueño</button>
-        </div>
-        <div>
-            @for (item of nuevoArchivo.owners; track $index) {
-                <span>{{item.name}}</span>
-                <button class="btn btn-danger" type="button" (click)="eliminarDuenio($index)">-</button>
-            }
+            }    
         </div>
 
+        <div>
+            <label for="">Tipo de Archivo</label>
+            <select name="nuevoArchivo.type" id="nuevoArchivo.type" [(ngModel)]="nuevoArchivo.type">
+                @for (item of tiposArchivos; track $index) {
+                    <option [value]="item">{{item}}</option>
+                }
+            </select>        
+        </div>
+        
+        <div>
+            <div>      
+                <label for="duenioSeleccionado">Dueños</label>      
+                <select name="duenioSeleccionado" [(ngModel)]="duenioSeleccionado">
+                    @for (item of listDuenios; track $index) {
+                        <option [ngValue]="item">{{item.name}}</option>
+                    }
+                </select>
+                <button class="btn btn-info" type="button" (click)="agregarDuenio()">Agregar Dueño</button>
+            </div>
+            <div>
+                @for (item of nuevoArchivo.owners; track $index) {
+                    <span>{{item.name}}</span>
+                    <button class="btn btn-danger" type="button" (click)="eliminarDuenio($index)">-</button>
+                }
+            </div>
+        </div>
         <button class="btn btn-primary" type="submit">Confirmar</button>
     </form>
 </div>
