@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ArchivoFormComponent } from './archivo-form.component';
+import { FormArchivoComponent } from './form-archivo.component';
 
-describe('ArchivoFormComponent', () => {
-  let component: ArchivoFormComponent;
-  let fixture: ComponentFixture<ArchivoFormComponent>;
+describe('FormArchivoComponent', () => {
+  let component: FormArchivoComponent;
+  let fixture: ComponentFixture<FormArchivoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ArchivoFormComponent]
+      imports: [FormArchivoComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ArchivoFormComponent);
+    fixture = TestBed.createComponent(FormArchivoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

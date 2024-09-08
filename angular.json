@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "file-management": {
+    "file-management-challenge": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/file-management",
+            "outputPath": "dist/file-management-challenge",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -59,10 +59,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "file-management:build:production"
+              "buildTarget": "file-management-challenge:build:production"
             },
             "development": {
-              "buildTarget": "file-management:build:development"
+              "buildTarget": "file-management-challenge:build:development"
             }
           },
           "defaultConfiguration": "development"
