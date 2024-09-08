@@ -12,12 +12,15 @@ import { FILE_LIST } from '../data/file.storage';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-
   title = 'file-management-challenge';
 
   listaArchivos : FileItem[] = FILE_LIST
 
   mostrarFecha(fecha: Date) {
     return fecha.getDay()+1 + "/" + fecha.getMonth() + "/" + fecha.getFullYear()
+  }
+
+  pushearArchivo(archivo: FileItem) {
+    this.listaArchivos.push(archivo)
   }
 }

@@ -1,31 +1,33 @@
-<app-form-archivo></app-form-archivo>
+<app-form-archivo (archivoEmitter)="pushearArchivo($event)" ></app-form-archivo>
 
-<h1>Archivos</h1>
-<select name="" id="">
-    <option>Nuevo</option>
-    <option>Borrar</option>
-</select>
-<table>
-    <thead>  
-        <tr>
-            <th>#</th>
-            <th>Nombre</th>
-            <th>Fecha</th>
-            <th>Dueños</th>
-        </tr>    
-    </thead>
-    <tbody>
-        @for (item of listaArchivos; track $index) {
+@if (listaArchivos.length >= 1) {
+    <h1>Archivos</h1>
+    <select name="" id="">
+        <option>Nuevo</option>
+        <option>Borrar</option>
+    </select>
+    <table>
+        <thead>  
             <tr>
-                <th>{{$index}}</th>
-                <td>{{item.name}}</td>
-                <td>{{mostrarFecha(item.creation)}}</td>
-                <td>
-                @for (duenio of item.owners; track $index) {
-                    <img [src]="duenio.avatarUrl" width="40px" height="auto">
-                }
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Fecha</th>
+                <th>Dueños</th>
+            </tr>    
+        </thead>
+        <tbody>
+            @for (item of listaArchivos; track $index) {
+                <tr>
+                    <th>{{$index}}</th>
+                    <td>{{item.name}}</td>
+                    <td>{{mostrarFecha(item.creation)}}</td>
+                    <td>
+                    @for (duenio of item.owners; track $index) {
+                        <img [src]="duenio.avatarUrl" width="40px" height="auto">
+                    }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

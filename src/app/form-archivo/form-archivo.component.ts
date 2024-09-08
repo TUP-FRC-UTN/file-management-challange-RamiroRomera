@@ -53,7 +53,6 @@ export class FormArchivoComponent {
   }
   //#endregion
 
-  
   sendForm(form: NgForm) {
     // console.log(this.nuevoArchivo.owners.length)
     // console.log(this.nuevoArchivo.owners)
