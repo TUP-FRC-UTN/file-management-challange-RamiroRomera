@@ -15,11 +15,12 @@
 
         <div>
             <label class="form-label">Tipo de Archivo</label>
-            <select class="form-select" name="nuevoArchivo.type" id="nuevoArchivo.type" [(ngModel)]="nuevoArchivo.type">
+            <select #tipo="ngModel" class="form-select" name="nuevoArchivo.type" id="nuevoArchivo.type" [(ngModel)]="nuevoArchivo.type" required>
                 @for (item of tiposArchivos; track $index) {
                     <option [value]="item">{{item}}</option>
                 }
-            </select>        
+            </select>
+            
         </div>
         
         <div>
