@@ -44,9 +44,12 @@ export class AppComponent {
   accionCambia() {
     console.log(this.accionSeleccionada)
     if (this.accionSeleccionada == "nuevo") {
+      this.accionSeleccionada = ""
       this.mostrarForm = true
     } else if (this.accionSeleccionada == "borrar") {
+      this.accionSeleccionada = ""
       this.eliminarArchivos()
     }
+
   }
 }

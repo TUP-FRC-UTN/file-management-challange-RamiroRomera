@@ -3,6 +3,7 @@
         <div class="col d-flex justify-content-between">
             <h1>Archivos</h1>
             <select class="form-select" [(ngModel)]="accionSeleccionada" (change)="accionCambia()">
+                <option value="">Seleccionar acción...</option>
                 <option value="nuevo">Nuevo</option>
                 <option value="borrar" (click)="eliminarArchivos()">Borrar</option>
             </select>
