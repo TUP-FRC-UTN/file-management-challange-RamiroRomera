@@ -1,16 +1,19 @@
 <div class="container">
-    <app-form-archivo (archivoEmitter)="pushearArchivo($event)"></app-form-archivo>
     <div class="row mt-4">
         <div class="col d-flex justify-content-between">
             <h1>Archivos</h1>
-            <select class="form-select">
+            <select class="form-select" [(ngModel)]="accionSeleccionada" (change)="accionCambia()">
                 <option value="nuevo">Nuevo</option>
-                <option value="borrar">Borrar</option>
+                <option value="borrar" (click)="eliminarArchivos()">Borrar</option>
             </select>
         </div>
     </div>
 
-    @for (item of listaArchivos; track item) {
-        <app-archivo [archivo]=item></app-archivo>
+    @if (mostrarForm == true) {
+        <app-form-archivo (archivoEmitter)="pushearArchivo($event)"></app-form-archivo>
+    } @else {
+        @for (item of listaArchivos; track item) {
+            <app-archivo (archivoSeleccionado)="agregarEliminado($event)" [archivo]=item></app-archivo>
+        }
     }
 </div>
