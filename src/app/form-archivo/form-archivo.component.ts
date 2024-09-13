@@ -25,6 +25,15 @@ export class FormArchivoComponent {
     parentId: undefined 
   }
 
+  archivoVacio : FileItem = {
+    id: '',
+    name: '',
+    creation: new Date(),
+    owners: [],
+    type: FileType.FILE,
+    parentId: undefined 
+  }
+
   duenioSeleccionado : FileOwner = {
     name: "",
     avatarUrl: ""
@@ -61,12 +70,7 @@ export class FormArchivoComponent {
     // console.log(form.valid)
     if (form.valid) {
       this.archivoEmitter.emit(this.nuevoArchivo)
-      this.nuevoArchivo.name = ""
-      this.nuevoArchivo.owners = []
-      this.nuevoArchivo.type = FileType.FILE
-      this.nuevoArchivo.creation = new Date()
-      this.duenioSeleccionado.name = ""
-      this.duenioSeleccionado.avatarUrl = ""
+      this.nuevoArchivo = this.archivoVacio
     }
   }
 }
