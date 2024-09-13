@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FileItem, FileOwner, FileType } from '../../models/file.item.model';
 import { FormsModule, NgForm } from '@angular/forms';
 import { OWNERS } from '../../data/file.storage';
@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './form-archivo.component.css'
 })
 export class FormArchivoComponent {
+  
   @Output() archivoEmitter : EventEmitter<FileItem> = new EventEmitter<FileItem>();
   
   //#region Declaracion de variables
@@ -44,7 +45,7 @@ export class FormArchivoComponent {
     // console.log(this.duenioSeleccionado.avatarUrl)
     if (!this.nuevoArchivo.owners.includes(this.duenioSeleccionado) && this.duenioSeleccionado.name != "") {
       this.nuevoArchivo.owners.push(this.duenioSeleccionado);
-      console.log(this.nuevoArchivo.owners.length)
+      // console.log(this.nuevoArchivo.owners.length)
     }
   }
 
@@ -58,7 +59,6 @@ export class FormArchivoComponent {
     // console.log(this.nuevoArchivo.owners)
     // console.log(this.nuevoArchivo)
     // console.log(form.valid)
-    // this.archivoEmitter.emit(this.nuevoArchivo)
     if (form.valid) {
       this.archivoEmitter.emit(this.nuevoArchivo)
       this.nuevoArchivo.name = ""

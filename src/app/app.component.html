@@ -1,33 +1,16 @@
-<app-form-archivo (archivoEmitter)="pushearArchivo($event)" ></app-form-archivo>
+<div class="container">
+    <app-form-archivo (archivoEmitter)="pushearArchivo($event)"></app-form-archivo>
+    <div class="row mt-4">
+        <div class="col d-flex justify-content-between">
+            <h1>Archivos</h1>
+            <select class="form-select">
+                <option value="nuevo">Nuevo</option>
+                <option value="borrar">Borrar</option>
+            </select>
+        </div>
+    </div>
 
-@if (listaArchivos.length >= 1) {
-    <h1>Archivos</h1>
-    <select name="" id="">
-        <option>Nuevo</option>
-        <option>Borrar</option>
-    </select>
-    <table>
-        <thead>  
-            <tr>
-                <th>#</th>
-                <th>Nombre</th>
-                <th>Fecha</th>
-                <th>Dueños</th>
-            </tr>    
-        </thead>
-        <tbody>
-            @for (item of listaArchivos; track $index) {
-                <tr>
-                    <th>{{$index}}</th>
-                    <td>{{item.name}}</td>
-                    <td>{{mostrarFecha(item.creation)}}</td>
-                    <td>
-                    @for (duenio of item.owners; track $index) {
-                        <img [src]="duenio.avatarUrl" width="40px" height="auto">
-                    }
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
+    @for (item of listaArchivos; track item) {
+        <app-archivo [archivo]=item></app-archivo>
+    }
+</div>
